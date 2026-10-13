@@ -8,11 +8,11 @@ export default function AboutPage() {
       <section className="bg-gradient-to-r from-dark to-primary-dark py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            About BCEXIM
+            About Galaxy Lotus International
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-base md:text-lg">
-            From the spice capital of India to the world — our journey of
-            exporting excellence, quality, and trust.
+            From Ahmedabad, Gujarat to the world — our journey of
+            delivering quality, and trust beyond borders.
           </p>
         </div>
       </section>
@@ -27,16 +27,16 @@ export default function AboutPage() {
                 subtitle="Rooted in Tradition, Driven by Excellence"
               />
               <p className="text-gray-600 leading-relaxed mb-4">
-                BCEXIM was founded with a simple yet powerful vision — to bring
+                Galaxy Lotus International was founded with a simple yet powerful vision — to bring
                 the finest Indian spices and agricultural products to the
-                global market. Based in Unjha, Gujarat, the renowned spice
-                trading hub of India, we are strategically located at the heart
-                of the country&apos;s richest spice-growing regions.
+                global market. Based in Ahmedabad, Gujarat, the vibrant commercial
+                hub of western India, we are strategically located with excellent
+                connectivity to the country&apos;s richest agricultural regions.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Unjha is home to Asia&apos;s largest spice market, where
-                centuries-old trading traditions meet modern commerce. Our deep
-                understanding of this market, combined with strong
+                Ahmedabad is a thriving center for trade and commerce, with
+                world-class infrastructure and logistics facilities. Our deep
+                understanding of Indian agricultural markets, combined with strong
                 relationships with local farmers and processors, gives us a
                 unique advantage in sourcing the finest quality products at
                 competitive prices.
@@ -117,69 +117,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Sourcing Regions */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <SectionHeading
-            title="Sourcing Regions"
-            subtitle="From India&apos;s Finest Growing Regions"
-            center
-          />
-          <p className="text-center text-gray-600 max-w-3xl mx-auto mb-10">
-            India is blessed with diverse climatic conditions that produce some
-            of the world&apos;s finest spices, vegetables, and agricultural products.
-            We source our products from the best growing regions across the
-            country.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                region: "Gujarat",
-                products: "Cumin, Fennel, Turmeric, Chillies, Jaggery",
-                desc: "The spice hub of India, home to Asia's largest spice market in Unjha.",
-              },
-              {
-                region: "Kerala",
-                products: "Black Pepper, Cardamom, Ginger, Turmeric",
-                desc: "The land of spices with tropical climate ideal for high-value spice cultivation.",
-              },
-              {
-                region: "Maharashtra",
-                products: "Onions, Garlic, Turmeric, Chillies",
-                desc: "Major producer of dehydrated vegetables and onions for export.",
-              },
-              {
-                region: "Karnataka",
-                products: "Chillies, Turmeric, Pepper, Cardamom",
-                desc: "Renowned for Byadgi chillies and high-quality turmeric varieties.",
-              },
-              {
-                region: "Tamil Nadu",
-                products: "Moringa, Chillies, Turmeric, Banana",
-                desc: "Leading producer of moringa and other superfoods for export markets.",
-              },
-              {
-                region: "Rajasthan",
-                products: "Cumin, Coriander, Fenugreek, Chillies",
-                desc: "Arid climate produces spices with intense flavor and aroma profiles.",
-              },
-            ].map((item) => (
-              <div
-                key={item.region}
-                className="group bg-light rounded-xl p-6 border border-gray-100 hover:border-primary/30 hover:shadow-md transition-all"
-              >
-                <h3 className="text-lg font-bold text-dark mb-2 group-hover:text-primary transition-colors">
-                  {item.region}
-                </h3>
-                <p className="text-sm text-primary font-medium mb-2">
-                  {item.products}
-                </p>
-                <p className="text-sm text-gray-500">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Sourcing Regions - Hidden as requested */}
 
       {/* Export Process */}
       <section className="py-16 md:py-24 bg-dark">
@@ -236,7 +174,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-20 bg-primary">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Ready to Partner with India&apos;s Trusted Exporter?
+            Ready to Partner with Galaxy Lotus International?
           </h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
             Whether you&apos;re a first-time buyer or a regular importer, our team

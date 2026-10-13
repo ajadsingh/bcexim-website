@@ -9,6 +9,7 @@ export default function ContactPage() {
     email: "",
     phone: "",
     company: "",
+    website: "",
     product: "",
     message: "",
   });
@@ -20,11 +21,34 @@ export default function ContactPage() {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, send this to your API endpoint
-    console.log("Form submitted:", formState);
-    setSubmitted(true);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/galaxylotusint@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          phone: formState.phone,
+          company: formState.company,
+          website: formState.website,
+          product: formState.product,
+          message: formState.message,
+          _subject: `New Enquiry from ${formState.name} - Galaxy Lotus International`,
+        }),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Something went wrong. Please try again or contact us via WhatsApp.");
+      }
+    } catch {
+      alert("Network error. Please try again or contact us via WhatsApp.");
+    }
   };
 
   return (
@@ -53,22 +77,23 @@ export default function ContactPage() {
                   icon={<LocationIcon />}
                   title="Our Location"
                   lines={[
-                    "Unjha, District Mehsana",
-                    "Gujarat - 384170",
-                    "India",
+                    "C1-FF, Shri Krishna Park",
+                    "Behind Shivaji Complex, Near Smruti Mandir",
+                    "Ghodasar, Ahmedabad – 380050",
+                    "Gujarat (INDIA)",
                   ]}
                 />
                 <ContactInfoCard
                   icon={<PhoneIcon />}
                   title="Phone"
-                  lines={["+91-XXXXXXXXXX"]}
-                  links={["tel:+91XXXXXXXXXX"]}
+                  lines={["+91 8780010843"]}
+                  links={["tel:+918780010843"]}
                 />
                 <ContactInfoCard
                   icon={<MailIcon />}
                   title="Email"
-                  lines={["info@bcexim.com", "sales@bcexim.com"]}
-                  links={["mailto:info@bcexim.com", "mailto:sales@bcexim.com"]}
+                  lines={["galaxylotusint@gmail.com"]}
+                  links={["mailto:galaxylotusint@gmail.com"]}
                 />
                 <ContactInfoCard
                   icon={<ClockIcon />}
@@ -93,7 +118,7 @@ export default function ContactPage() {
                   Get instant responses to your queries via WhatsApp. We typically respond within minutes during business hours.
                 </p>
                 <a
-                  href="https://wa.me/91XXXXXXXXXX?text=Hello!%20I%20need%20more%20information%20about%20your%20products."
+                  href="https://wa.me/918780010843?text=Hello!%20I%20need%20more%20information%20about%20your%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center bg-white text-[#25D366] font-bold py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-sm"
@@ -126,6 +151,7 @@ export default function ContactPage() {
                         email: "",
                         phone: "",
                         company: "",
+                        website: "",
                         product: "",
                         message: "",
                       });
@@ -175,6 +201,14 @@ export default function ContactPage() {
                       onChange={handleChange}
                       placeholder="Your Company Ltd."
                     />
+                    <FormField
+                      label="Website"
+                      name="website"
+                      type="url"
+                      value={formState.website || ""}
+                      onChange={handleChange}
+                      placeholder="https://www.yourwebsite.com"
+                    />
                   </div>
 
                   {/* Product Interest */}
@@ -189,21 +223,10 @@ export default function ContactPage() {
                       className="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-white text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
                     >
                       <option value="">Select a product...</option>
-                      <option value="Red Chilli Powder">Red Chilli Powder</option>
-                      <option value="Red Chilli Flakes">Red Chilli Flakes</option>
-                      <option value="Turmeric Powder">Turmeric Powder</option>
-                      <option value="Dried Turmeric">Dried Turmeric</option>
-                      <option value="Dehydrated Onion Powder">Dehydrated Onion Powder</option>
-                      <option value="Dehydrated Garlic Powder">Dehydrated Garlic Powder</option>
-                      <option value="Dehydrated Garlic Flakes">Dehydrated Garlic Flakes</option>
-                      <option value="Dried/Dehydrated Onions">Dried/Dehydrated Onions</option>
-                      <option value="Dried Ginger">Dried Ginger (Bleached/Unbleached)</option>
-                      <option value="Jaggery">Jaggery</option>
-                      <option value="Jaggery Powder">Jaggery Powder</option>
-                      <option value="Ginger Garlic Paste">Ginger Garlic Paste</option>
-                      <option value="Banana Powder">Banana Powder</option>
-                      <option value="Moringa Powder">Moringa Powder</option>
-                      <option value="Khajur Powder">Khajur Powder (Date Powder)</option>
+                      <option value="Onion Powder / Flakes">Onion Powder / Flakes</option>
+                      <option value="Garlic Powder / Flakes">Garlic Powder / Flakes</option>
+                      <option value="Psyllium Husk & Powder">Psyllium Husk &amp; Powder</option>
+                      <option value="Guar Gum Powder">Guar Gum Powder</option>
                       <option value="Multiple Products">Multiple Products / Custom Order</option>
                     </select>
                   </div>
@@ -236,15 +259,33 @@ export default function ContactPage() {
                 </form>
               )}
 
-              {/* Map placeholder */}
-              <div className="mt-8 bg-gray-200 rounded-xl h-64 flex items-center justify-center border border-gray-100">
-                <div className="text-center text-gray-500">
-                  <svg className="w-10 h-10 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <p className="font-semibold text-sm">Unjha, Gujarat, India</p>
-                  <p className="text-xs">Asia&apos;s Largest Spice Market</p>
+              {/* Interactive Google Map */}
+              <div className="mt-8 bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                <div className="p-3 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-gray-700">
+                    <LocationIcon />
+                    <span>C1-FF, Shri Krishna Park, Behind Shivaji Complex, Ghodasar, Ahmedabad 380050</span>
+                  </div>
+                  <a
+                    href="https://maps.google.com/?q=Shri+Krishna+Park+Ghodasar+Ahmedabad+380050"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-primary font-semibold hover:underline"
+                  >
+                    Open in Maps →
+                  </a>
+                </div>
+                <div className="h-72 w-full">
+                  <iframe
+                    title="Office Location Map"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src="https://maps.google.com/maps?q=Shri+Krishna+Park,+Behind+Shivaji+Complex,+Near+Smruti+Mandir,+Ghodasar,+Ahmedabad,+Gujarat+380050&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  />
                 </div>
               </div>
             </div>
@@ -263,20 +304,16 @@ export default function ContactPage() {
           <div className="space-y-4">
             {[
               {
-                q: "What is your minimum order quantity (MOQ)?",
-                a: "Our MOQ varies by product. Typically, we can supply from 1 MT for most spice products. For dehydrated products, the MOQ starts from 500 kg. Contact us with your specific requirements for a tailored quote.",
-              },
-              {
                 q: "Do you provide product samples?",
                 a: "Yes, we provide free samples for product evaluation. Shipping costs for samples are borne by the buyer. We can send samples via air courier to reach you within 5-7 business days.",
               },
               {
                 q: "What certifications do you have?",
-                a: "We are ISO 22000:2018 certified, HACCP compliant, registered with the Spices Board of India, and hold FSSAI license. Organic certification is available for specific products upon request.",
+                a: "We are registered with APEDA (Agricultural & Processed Food Products Export Development Authority) and hold a valid FSSAI license and IEC (Import Export Code). Organic certification is also available for select products upon request. You can view all our certificates on our Certifications page.",
               },
               {
                 q: "What payment terms do you offer?",
-                a: "We offer flexible payment terms including Letter of Credit (L/C), Telegraphic Transfer (T/T), and Documents Against Payment (D/P). For first-time orders, we typically prefer 50% advance and 50% against shipping documents.",
+                a: "We offer flexible payment options, including Letter of Credit (L/C), Telegraphic Transfer (T/T), and Escrow Account. For first-time orders, our preferred terms are 50% advance payment, with the remaining 50% payable against shipping documents via L/C or T/T.",
               },
               {
                 q: "How long does shipping take?",

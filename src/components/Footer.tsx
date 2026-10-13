@@ -1,20 +1,17 @@
 import Link from "next/link";
 
 const productLinks = [
-  "Red Chilli Powder",
-  "Turmeric Powder",
-  "Dehydrated Onion Powder",
-  "Dehydrated Garlic Powder",
-  "Jaggery",
-  "Ginger Garlic Paste",
-  "Moringa Powder",
+  "Onion Powder / Flakes",
+  "Garlic Powder / Flakes",
+  "Psyllium Husk & Powder",
+  "Guar Gum Powder",
 ];
 
 const quickLinks = [
   { name: "Home", href: "/" },
   { name: "Products", href: "/products" },
+  { name: "Certifications", href: "/certifications" },
   { name: "About Us", href: "/about" },
-  { name: "Quality", href: "/quality" },
   { name: "Contact Us", href: "/contact" },
 ];
 
@@ -28,16 +25,16 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
-                BC
+                GL
               </div>
               <div>
-                <h2 className="text-xl font-bold">BCEXIM</h2>
-                <p className="text-xs text-gray-400 tracking-wide">EXPORTING EXCELLENCE</p>
+                <h2 className="text-xl font-bold">GalaxyLotus</h2>
+                <p className="text-xs text-gray-400 tracking-wide">DELIVERING QUALITY BEYOND BORDERS</p>
               </div>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
-              Premium quality Indian spices, dehydrated products, and natural food ingredients exported globally.
-              Committed to quality, purity, and customer satisfaction.
+              Premium quality dehydrated onion & garlic, psyllium husk & powder, and guar gum powder — exported globally.
+              APEDA Registered | FSSAI Licensed | IEC Holder.
             </p>
             <div className="flex gap-3">
               <SocialLink href="#" icon={<FacebookIcon />} label="Facebook" />
@@ -53,7 +50,7 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-2.5">
-              {quickLinks.map((link) => (
+              {quickLinks.filter(l => l.href !== "/quality").map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -96,30 +93,34 @@ export default function Footer() {
                   <LocationIcon />
                 </span>
                 <span>
-                  Unjha, Gujarat, India
+                  C1-FF, Shri Krishna Park,
                   <br />
-                  PIN: 384170
+                  Behind Shivaji Complex, Near Smruti Mandir,
+                  <br />
+                  Ghodasar, Ahmedabad – 380050
+                  <br />
+                  Gujarat (INDIA)
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-primary">
                   <PhoneIcon />
                 </span>
-                <a href="tel:+91XXXXXXXXXX" className="hover:text-primary-light transition-colors">
-                  +91-XXXXXXXXXX
+                <a href="tel:+918780010843" className="hover:text-primary-light transition-colors">
+                  +91 8780010843
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-primary">
                   <MailIcon />
                 </span>
-                <a href="mailto:info@bcexim.com" className="hover:text-primary-light transition-colors">
-                  info@bcexim.com
+                <a href="mailto:galaxylotusint@gmail.com" className="hover:text-primary-light transition-colors">
+                  galaxylotusint@gmail.com
                 </a>
               </li>
-              <li className="pt-2">
+              <li className="pt-2 hidden md:block">
                 <a
-                  href="https://wa.me/91XXXXXXXXXX"
+                  href="https://wa.me/918780010843"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#1fb954] transition-colors"
@@ -135,7 +136,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-gray-700/50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} BCEXIM. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Galaxy Lotus International. All rights reserved.</p>
           <p>
             Designed & Developed with ❤️ for Quality Exports
           </p>

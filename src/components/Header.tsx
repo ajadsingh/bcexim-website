@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Products", href: "/products" },
+  { name: "Certifications", href: "/certifications" },
   { name: "About Us", href: "/about" },
-  { name: "Quality", href: "/quality" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -28,13 +28,13 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center py-2">
           <div className="flex gap-6">
             <span className="flex items-center gap-1.5">
-              <PhoneIcon /> +91-XXXXXXXXXX
+              <PhoneIcon /> +91 8780010843
             </span>
             <span className="flex items-center gap-1.5">
-              <MailIcon /> info@bcexim.com
+              <MailIcon /> galaxylotusint@gmail.com
             </span>
           </div>
-          <span>Premium Indian Spices & Dehydrated Products Exporter</span>
+          <span>Delivering Quality Beyond Borders</span>
         </div>
       </div>
 
@@ -44,14 +44,14 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg md:text-xl">
-              BC
+              GL
             </div>
             <div>
               <h1 className="text-lg md:text-2xl font-bold text-dark leading-tight">
-                BCEXIM
+                GalaxyLotus
               </h1>
               <p className="text-[10px] md:text-xs text-gray-500 leading-tight tracking-wide">
-                EXPORTING EXCELLENCE GLOBALLY
+                DELIVERING QUALITY BEYOND BORDERS
               </p>
             </div>
           </Link>

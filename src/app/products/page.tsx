@@ -38,9 +38,9 @@ export default function ProductsPage() {
             Our Products
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-base md:text-lg">
-            Discover our comprehensive range of premium Indian spices,
-            dehydrated products, natural sweeteners, and superfoods — sourced
-            from the finest farms and processed to international standards.
+            Discover our premium range of dehydrated vegetables (onion, garlic),
+            psyllium husk & powder, guar gum powder — sourced from the finest
+            Indian farms and processed to international export standards.
           </p>
         </div>
       </section>
@@ -108,19 +108,33 @@ export default function ProductsPage() {
                   href={`/products/${product.id}`}
                   className="group bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col"
                 >
-                  {/* Image area with gradient */}
-                  <div
-                    className="h-48 relative overflow-hidden"
-                    style={{ background: product.image }}
-                  >
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
-                    <div className="absolute top-3 left-3">
-                      <span className="text-xs font-medium bg-white/90 text-dark px-2.5 py-1 rounded-full">
+                  {/* Image area */}
+                  <div className="h-52 relative overflow-hidden bg-gray-100">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className={`w-full h-full object-cover transition-all duration-500 ${
+                        product.gallery && product.gallery.length > 1
+                          ? "group-hover:opacity-0 group-hover:scale-105"
+                          : "group-hover:scale-105"
+                      }`}
+                    />
+                    {product.gallery && product.gallery.length > 1 && (
+                      <img
+                        src={product.gallery[1].image}
+                        alt={product.gallery[1].label}
+                        className="w-full h-full object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                      />
+                    )}
+                    <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
+                      <span className="text-[11px] font-semibold bg-white/95 text-dark px-2.5 py-1 rounded-full shadow-sm">
                         {product.category}
                       </span>
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-5xl opacity-30 group-hover:opacity-40 transition-opacity">🌿</span>
+                      {product.gallery && product.gallery.length > 1 && (
+                        <span className="text-[10px] font-medium bg-dark/70 text-white px-2 py-0.5 rounded-full backdrop-blur-sm">
+                          Flakes &amp; Powder
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -133,22 +147,7 @@ export default function ProductsPage() {
                       {product.description}
                     </p>
 
-                    {/* Specs preview */}
-                    <div className="mb-4">
-                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">
-                        Specifications
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {product.specifications.slice(0, 3).map((spec, idx) => (
-                          <span
-                            key={idx}
-                            className="text-[11px] bg-light text-primary-dark px-2 py-0.5 rounded-full"
-                          >
-                            {spec}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+                    {/* Specifications hidden - will make visible in future */}
 
                     {/* Action */}
                     <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-primary-dark transition-colors mt-auto">
@@ -192,7 +191,7 @@ export default function ProductsPage() {
               Contact Us
             </Link>
             <a
-              href="https://wa.me/91XXXXXXXXXX?text=Hello!%20I%20am%20looking%20for%20a%20specific%20product."
+              href="https://wa.me/918780010843?text=Hello!%20I%20am%20looking%20for%20a%20specific%20product."
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3.5 bg-[#25D366] text-white rounded-lg font-bold hover:bg-[#1fb954] transition-colors shadow-lg inline-flex items-center justify-center gap-2"
@@ -217,40 +216,22 @@ export default function ProductsPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                name: "Spices",
-                desc: "India's finest spices including chillies, turmeric, and more — sourced from the best growing regions.",
-                count: products.filter((p) => p.category === "Spices").length,
-                icon: "🌶️",
-              },
-              {
                 name: "Dehydrated Products",
-                desc: "Premium dehydrated onion, garlic, ginger and more — processed to retain maximum flavor.",
+                desc: "Premium dehydrated onion (Red, White, Pink) and garlic in powder and flakes form — processed to retain maximum flavor and aroma.",
                 count: products.filter((p) => p.category === "Dehydrated Products").length,
                 icon: "🧅",
               },
               {
-                name: "Natural Sweeteners",
-                desc: "Traditional Indian jaggery, jaggery powder, and date powder — natural, unrefined sweeteners.",
-                count: products.filter((p) => p.category === "Natural Sweeteners").length,
-                icon: "🍯",
+                name: "Health & Wellness",
+                desc: "Psyllium Husk & Powder in multiple purity grades — pharma, food, and organic certified, meeting global USP/BP/FCC standards.",
+                count: products.filter((p) => p.category === "Health & Wellness").length,
+                icon: "🌾",
               },
               {
-                name: "Pastes",
-                desc: "Ready-to-use ginger garlic paste made from fresh ingredients — ideal for commercial kitchens.",
-                count: products.filter((p) => p.category === "Pastes").length,
-                icon: "🧄",
-              },
-              {
-                name: "Fruit Powders",
-                desc: "Natural banana powder — perfect for smoothies, baking, and baby food.",
-                count: products.filter((p) => p.category === "Fruit Powders").length,
-                icon: "🍌",
-              },
-              {
-                name: "Superfoods",
-                desc: "Nutrient-rich moringa powder — a true superfood for the health-conscious global market.",
-                count: products.filter((p) => p.category === "Superfoods").length,
-                icon: "🌿",
+                name: "Industrial & Food Ingredients",
+                desc: "Guar Gum Powder in food, industrial, oil & gas, pharmaceutical, and cosmetic grades — India's #1 export ingredient.",
+                count: products.filter((p) => p.category === "Industrial & Food Ingredients").length,
+                icon: "🪴",
               },
             ].map((cat) => (
               <button

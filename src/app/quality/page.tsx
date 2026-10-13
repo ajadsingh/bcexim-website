@@ -27,7 +27,7 @@ export default function QualityPage() {
                 subtitle="Quality is Not an Option, It&apos;s Our Promise"
               />
               <p className="text-gray-600 leading-relaxed mb-4">
-                At BCEXIM, quality is at the core of everything we do. From the
+                At Galaxy Lotus International, quality is at the core of everything we do. From the
                 moment raw materials are sourced from farms to the final
                 dispatch of packed products, every step is monitored and
                 controlled to ensure the highest standards of purity, freshness,
@@ -51,9 +51,9 @@ export default function QualityPage() {
                   "ISO 22000:2018",
                   "HACCP Certified",
                   "GMP Compliant",
-                  "Spices Board Registered",
+                  "APEDA Registered",
                   "FSSAI Licensed",
-                  "Organic Certified",
+                  "IEC Holder",
                 ].map((cert) => (
                   <span
                     key={cert}
@@ -266,9 +266,9 @@ export default function QualityPage() {
               { name: "ISO 22000", desc: "Food Safety Management" },
               { name: "HACCP", desc: "Hazard Analysis" },
               { name: "GMP", desc: "Good Manufacturing" },
-              { name: "Spices Board", desc: "Government of India" },
+              { name: "APEDA", desc: "Govt. of India Export Auth." },
               { name: "FSSAI", desc: "Food Safety Authority" },
-              { name: "Organic", desc: "NPOP / NOP Certified" },
+              { name: "IEC", desc: "Import Export Code" },
             ].map((cert) => (
               <div
                 key={cert.name}

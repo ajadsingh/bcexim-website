@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { products, type Product } from "@/data/products";
+import ProductGallery from "@/components/ProductGallery";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -19,9 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return { title: "Product Not Found" };
 
   return {
-    title: `${product.name} - Premium Indian Export Quality | BCEXIM`,
+    title: `${product.name} - Premium Indian Export Quality | Galaxy Lotus International`,
     description: product.description,
-    keywords: `${product.name}, Indian ${product.category}, export quality, BCEXIM, Gujarat exporter, wholesale`,
+    keywords: `${product.name}, Indian ${product.category}, export quality, Galaxy Lotus International, Ahmedabad exporter, wholesale`,
   };
 }
 
@@ -50,22 +51,13 @@ export default async function ProductDetailPage({ params }: Props) {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
-            {/* Left - Product Image */}
-            <div className="sticky top-28">
-              <div
-                className="w-full aspect-square rounded-2xl flex items-center justify-center relative overflow-hidden shadow-xl"
-                style={{ background: product.image }}
-              >
-                <span className="text-8xl md:text-9xl opacity-30">🌿</span>
-                <div className="absolute top-5 left-5">
-                  <span className="text-xs font-semibold bg-white/95 text-dark px-3.5 py-1.5 rounded-full shadow-sm">
-                    {product.category}
-                  </span>
-                </div>
-                {/* Decorative ring */}
-                <div className="absolute inset-4 border-2 border-white/10 rounded-2xl" />
-              </div>
-            </div>
+            {/* Left - Product Gallery with Flakes and Powder options */}
+            <ProductGallery
+              productName={product.name}
+              category={product.category}
+              mainImage={product.image}
+              gallery={product.gallery}
+            />
 
             {/* Right - Product Info */}
             <div>
@@ -75,15 +67,45 @@ export default async function ProductDetailPage({ params }: Props) {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-6">
                 {product.name}
               </h1>
-              <p className="text-gray-600 text-base leading-relaxed mb-8">
+              <p className="text-gray-600 text-base leading-relaxed mb-6">
                 {product.description}
               </p>
 
+              {/* Export Note */}
+              {product.exportNote && (
+                <div className="bg-primary/5 border border-primary/20 rounded-xl px-5 py-4 mb-8">
+                  <p className="text-sm text-primary font-medium flex items-start gap-2">
+                    <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {product.exportNote}
+                  </p>
+                </div>
+              )}
+
+              {/* Specifications */}
+              <div className="mb-8">
+                <h3 className="text-lg font-bold text-dark mb-4 flex items-center gap-2">
+                  <span className="w-1.5 h-5 bg-accent rounded-full" />
+                  Specifications
+                </h3>
+                <div className="space-y-2">
+                  {product.specifications.map((spec, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                      <svg className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {spec}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* Quick Actions */}
-              <div className="flex flex-col sm:flex-row gap-3 mb-10">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href={`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(
-                    `Hello! I am interested in ${product.name}. Please share price, MOQ, and availability.`
+                  href={`https://wa.me/918780010843?text=${encodeURIComponent(
+                    `Hello! I am interested in ${product.name}. Please share price and availability.`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -103,36 +125,7 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Specifications Section */}
-      <section className="py-16 md:py-20 bg-light">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="max-w-4xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-dark mb-8 flex items-center gap-3">
-              <span className="w-2 h-8 bg-primary rounded-full" />
-              Specifications
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {product.specifications.map((spec, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-3 bg-white rounded-xl px-5 py-4 shadow-sm border border-gray-100"
-                >
-                  <svg
-                    className="w-5 h-5 text-primary flex-shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-sm font-medium text-dark">{spec}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Specifications Section - Hidden for now, will make visible in future */}
 
       {/* Applications Section */}
       <section className="py-16 md:py-20 bg-white">
@@ -192,11 +185,10 @@ export default async function ProductDetailPage({ params }: Props) {
               <span className="w-2 h-8 bg-accent rounded-full" />
               Quality Assurance
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
                 { icon: "🔬", title: "Lab Tested", desc: "Every batch tested for purity and safety" },
-                { icon: "✅", title: "ISO Certified", desc: "ISO 22000:2018 food safety management" },
-                { icon: "🛡️", title: "HACCP Compliant", desc: "Hazard analysis and critical control" },
+                { icon: "🛡️", title: "Quality Controlled", desc: "Rigorous quality procedures at every stage" },
                 { icon: "🌱", title: "Fresh & Natural", desc: "No artificial additives or preservatives" },
               ].map((item) => (
                 <div
@@ -230,8 +222,8 @@ export default async function ProductDetailPage({ params }: Props) {
               Request Quote
             </Link>
             <a
-              href={`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(
-                `Hello! I would like to know more about ${product.name} - pricing, MOQ, and availability.`
+              href={`https://wa.me/918780010843?text=${encodeURIComponent(
+                `Hello! I would like to know more about ${product.name} - pricing and availability.`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -272,11 +264,12 @@ function RelatedProducts({ currentSlug, category }: { currentSlug: string; categ
               href={`/products/${product.id}`}
               className="group bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
             >
-              <div
-                className="h-36 relative overflow-hidden flex items-center justify-center"
-                style={{ background: product.image }}
-              >
-                <span className="text-4xl opacity-30 group-hover:opacity-40 transition-opacity">🌿</span>
+              <div className="h-36 relative overflow-hidden bg-gray-100">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-dark text-sm group-hover:text-primary transition-colors">

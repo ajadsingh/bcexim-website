@@ -2,6 +2,7 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import SectionHeading from "@/components/SectionHeading";
 import { products } from "@/data/products";
+import HeroProductSlider from "@/components/HeroProductSlider";
 
 export default function Home() {
   const featuredProducts = products.slice(0, 6);
@@ -21,7 +22,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="animate-fade-in-up">
               <span className="inline-block text-primary-light text-sm font-semibold tracking-widest uppercase mb-4 bg-primary/10 px-4 py-1.5 rounded-full">
-                Exporting Excellence Globally
+                Delivering Quality Beyond Borders
               </span>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
                 Premium Indian{" "}
@@ -31,9 +32,9 @@ export default function Home() {
                 Products
               </h1>
               <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
-                From the heart of India&apos;s spice belt in Unjha, Gujarat, we export
-                the finest quality spices, dehydrated products, and natural food
-                ingredients to clients worldwide.
+                Based in Ahmedabad, the vibrant commercial hub of Gujarat, we export
+                the finest quality dehydrated vegetables, psyllium husk, guar gum powder,
+                and other premium agricultural ingredients to clients worldwide.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -69,28 +70,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero Image */}
-            <div className="hidden md:flex justify-center">
-              <div className="relative w-full max-w-md aspect-square">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-2xl" />
-                <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-8 flex flex-col items-center justify-center h-full">
-                  <span className="text-8xl mb-4">🌶️</span>
-                  <h3 className="text-white text-xl font-bold text-center mb-2">
-                    Premium Quality
-                  </h3>
-                  <p className="text-gray-300 text-sm text-center">
-                    Sourced from the finest farms across India
-                  </p>
-                  <div className="flex gap-3 mt-6">
-                    {["🧅", "🧄", "🫚", "🍌", "🌿"].map((emoji, i) => (
-                      <span key={i} className="text-2xl bg-white/10 rounded-lg p-2">
-                        {emoji}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Hero Product Slider */}
+            <HeroProductSlider />
           </div>
         </div>
 
@@ -111,13 +92,14 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
               <SectionHeading
-                title="About BCEXIM"
+                title="About Galaxy Lotus International"
                 subtitle="Your Trusted Partner for Premium Indian Exports"
               />
               <p className="text-gray-600 leading-relaxed mb-4">
-                Based in Unjha, Gujarat — the spice capital of India — BCEXIM
-                is a premier exporter of high-quality spices, dehydrated
-                products, and natural food ingredients. With deep-rooted
+                Based in Ahmedabad, Gujarat — the vibrant commercial capital of the state — Galaxy Lotus
+                International is a premier exporter of high-quality dehydrated
+                vegetables (onion, garlic), psyllium husk & powder, guar gum powder,
+                and natural food ingredients. With deep-rooted
                 connections to local farmers and state-of-the-art processing
                 facilities, we ensure every shipment meets international
                 quality standards.
@@ -130,11 +112,9 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-3 mb-6">
                 {[
-                  "ISO Certified",
-                  "HACCP Compliant",
-                  "Spices Board Registered",
-                  "Organic Certified",
+                  "APEDA Registered",
                   "FSSAI Licensed",
+                  "IEC Holder",
                 ].map((cert) => (
                   <span
                     key={cert}
@@ -213,7 +193,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeading
             title="Why Choose Us"
-            subtitle="What Makes BCEXIM Different"
+            subtitle="What Makes Galaxy Lotus International Different"
             center
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -282,7 +262,7 @@ export default function Home() {
               Contact Us Now
             </Link>
             <a
-              href="https://wa.me/91XXXXXXXXXX?text=Hello!%20I%20am%20interested%20in%20your%20products."
+              href="https://wa.me/918780010843?text=Hello!%20I%20am%20interested%20in%20your%20products."
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3.5 bg-[#25D366] text-white rounded-lg font-bold hover:bg-[#1fb954] transition-colors shadow-lg inline-flex items-center justify-center gap-2"
@@ -296,86 +276,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-light">
-        <div className="max-w-7xl mx-auto px-4">
-          <SectionHeading
-            title="Testimonials"
-            subtitle="What Our Clients Say"
-            center
-          />
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                quote:
-                  "BCEXIM has been our go-to supplier for Indian spices for over 3 years. Their quality consistency and on-time delivery are remarkable.",
-                name: "Ahmed Al-Rashid",
-                company: "Dubai, UAE",
-              },
-              {
-                quote:
-                  "The quality of their dehydrated products is exceptional. We highly recommend BCEXIM for anyone looking for premium Indian food ingredients.",
-                name: "Sarah Johnson",
-                company: "London, UK",
-              },
-              {
-                quote:
-                  "Professional team, excellent product quality, and great pricing. BCEXIM truly lives up to their name of exporting excellence.",
-                name: "Kenji Tanaka",
-                company: "Tokyo, Japan",
-              },
-            ].map((testimonial, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-gray-100"
-              >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
-                <div>
-                  <p className="font-semibold text-dark text-sm">{testimonial.name}</p>
-                  <p className="text-xs text-gray-400">{testimonial.company}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <SectionHeading
-            title="Certifications"
-            subtitle="Quality You Can Trust"
-            center
-          />
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8">
-            {[
-              { name: "ISO Certified", icon: "📋" },
-              { name: "HACCP", icon: "🛡️" },
-              { name: "Spices Board India", icon: "🇮🇳" },
-              { name: "FSSAI", icon: "✅" },
-              { name: "Organic Certified", icon: "🌱" },
-            ].map((cert) => (
-              <div
-                key={cert.name}
-                className="flex flex-col items-center gap-3 p-6 rounded-xl bg-light border border-gray-100 hover:border-primary/30 transition-all"
-              >
-                <span className="text-3xl">{cert.icon}</span>
-                <span className="text-sm font-semibold text-dark">{cert.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials - Hidden as requested */}
+      {/* Certifications - Hidden as requested, will have separate page later */}
     </>
   );
 }

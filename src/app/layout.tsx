@@ -16,19 +16,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BCEXIM - Premium Indian Spices & Dehydrated Products Exporter",
+  title: "Galaxy Lotus International - Premium Indian Spices, FoxNuts & Pulses Exporter",
   description:
-    "BCEXIM exports premium quality Indian spices, dehydrated products, jaggery, and natural food ingredients globally. Based in Unjha, Gujarat, India.",
+    "Galaxy Lotus International exports premium quality Indian spices, dehydrated products, FoxNuts, pulses, and natural food ingredients globally. Based in Ahmedabad, Gujarat, India.",
   keywords:
-    "spices exporter, Indian spices, dehydrated products, jaggery exporter, turmeric powder, red chilli, moringa powder, ginger garlic paste, BCEXIM, Gujarat exporter",
-  authors: [{ name: "BCEXIM" }],
+    "spices exporter, Indian spices, dehydrated products, FoxNuts, pulses exporter, turmeric powder, red chilli, moringa powder, ginger garlic paste, Galaxy Lotus International, Ahmedabad exporter",
+  authors: [{ name: "Galaxy Lotus International" }],
   openGraph: {
-    title: "BCEXIM - Premium Indian Spices Exporter",
+    title: "Galaxy Lotus International - Premium Indian Spices Exporter",
     description:
-      "Premium quality Indian spices, dehydrated products, and natural food ingredients exported globally.",
+      "Premium quality Indian spices, dehydrated products, FoxNuts, pulses, and natural food ingredients exported globally.",
     type: "website",
     locale: "en_IN",
-    siteName: "BCEXIM",
+    siteName: "Galaxy Lotus International",
   },
 };
 

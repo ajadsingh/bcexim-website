@@ -4,21 +4,33 @@ import type { Product } from "@/data/products";
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="group bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
-      {/* Image area with gradient */}
-      <div
-        className="h-48 relative overflow-hidden"
-        style={{ background: product.image }}
-      >
-        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
-        <div className="absolute top-3 left-3">
-          <span className="text-xs font-medium bg-white/90 text-dark px-2.5 py-1 rounded-full">
+      {/* Image area */}
+      <div className="h-52 relative overflow-hidden bg-gray-100">
+        <img
+          src={product.image}
+          alt={product.name}
+          className={`w-full h-full object-cover transition-all duration-500 ${
+            product.gallery && product.gallery.length > 1
+              ? "group-hover:opacity-0 group-hover:scale-105"
+              : "group-hover:scale-105"
+          }`}
+        />
+        {product.gallery && product.gallery.length > 1 && (
+          <img
+            src={product.gallery[1].image}
+            alt={product.gallery[1].label}
+            className="w-full h-full object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+          />
+        )}
+        <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
+          <span className="text-[11px] font-semibold bg-white/95 text-dark px-2.5 py-1 rounded-full shadow-sm">
             {product.category}
           </span>
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-5xl opacity-30 group-hover:opacity-40 transition-opacity">
-            🌿
-          </span>
+          {product.gallery && product.gallery.length > 1 && (
+            <span className="text-[10px] font-medium bg-dark/70 text-white px-2 py-0.5 rounded-full backdrop-blur-sm">
+              Powder &amp; Flakes
+            </span>
+          )}
         </div>
       </div>
 
@@ -31,20 +43,7 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.description}
         </p>
 
-        {/* Specs preview */}
-        <div className="mb-4">
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Specifications</p>
-          <div className="flex flex-wrap gap-1.5">
-            {product.specifications.slice(0, 3).map((spec, idx) => (
-              <span
-                key={idx}
-                className="text-[11px] bg-light text-primary-dark px-2 py-0.5 rounded-full"
-              >
-                {spec}
-              </span>
-            ))}
-          </div>
-        </div>
+        {/* Specifications hidden - will make visible in future */}
 
         {/* Action */}
         <Link

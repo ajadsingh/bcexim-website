@@ -66,6 +66,13 @@ body {
   animation: pulse-whatsapp 2s infinite;
 }
 
+/* Mobile bottom bar spacing */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 72px;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
