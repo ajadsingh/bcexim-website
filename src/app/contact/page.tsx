@@ -15,6 +15,9 @@ export default function ContactPage() {
   });
   const [submitted, setSubmitted] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -23,8 +26,14 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setErrorMessage("");
+
+    // FormSubmit endpoint using activated token with email fallback
+    const formSubmitEndpoint = "https://formsubmit.co/ajax/505010db9491ba0fc413c1c225f96af5";
+
     try {
-      const response = await fetch("https://formsubmit.co/ajax/galaxylotusint@gmail.com", {
+      const response = await fetch(formSubmitEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,16 +47,33 @@ export default function ContactPage() {
           website: formState.website,
           product: formState.product,
           message: formState.message,
-          _subject: `New Enquiry from ${formState.name} - Galaxy Lotus International`,
+          _subject: `New Inquiry: ${formState.product || "General"} - from ${formState.name}`,
+          _template: "table",
+          _captcha: "false",
         }),
       });
+
       if (response.ok) {
         setSubmitted(true);
       } else {
-        alert("Something went wrong. Please try again or contact us via WhatsApp.");
+        // Fallback directly to mailto so enquiry is NEVER lost
+        window.location.href = `mailto:galaxylotusint@gmail.com?subject=${encodeURIComponent(
+          `New Product Enquiry from ${formState.name}`
+        )}&body=${encodeURIComponent(
+          `Name: ${formState.name}\nEmail: ${formState.email}\nPhone: ${formState.phone}\nCompany: ${formState.company}\nProduct: ${formState.product}\n\nMessage:\n${formState.message}`
+        )}`;
+        setSubmitted(true);
       }
     } catch {
-      alert("Network error. Please try again or contact us via WhatsApp.");
+      // Offline or network block fallback
+      window.location.href = `mailto:galaxylotusint@gmail.com?subject=${encodeURIComponent(
+        `New Product Enquiry from ${formState.name}`
+      )}&body=${encodeURIComponent(
+        `Name: ${formState.name}\nEmail: ${formState.email}\nPhone: ${formState.phone}\nCompany: ${formState.company}\nProduct: ${formState.product}\n\nMessage:\n${formState.message}`
+      )}`;
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -249,9 +275,10 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-8 py-3.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors shadow-md inline-flex items-center justify-center gap-2"
+                    disabled={loading}
+                    className="w-full sm:w-auto px-8 py-3.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors shadow-md inline-flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Enquiry
+                    {loading ? "Sending..." : "Send Enquiry"}
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>

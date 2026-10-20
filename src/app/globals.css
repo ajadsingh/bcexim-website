@@ -87,3 +87,43 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #146b30;
 }
+
+/* Google Translate Widget Styling */
+.goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  font-family: inherit !important;
+  cursor: pointer;
+  display: inline-flex !important;
+  align-items: center;
+}
+.goog-te-gadget-simple .goog-te-menu-value {
+  color: #1f2937 !important;
+  margin: 0 !important;
+}
+.goog-te-gadget-simple .goog-te-menu-value span {
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+.goog-te-gadget-simple img {
+  display: none !important;
+}
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
+.goog-tooltip {
+  display: none !important;
+}
+.goog-tooltip:hover {
+  display: none !important;
+}
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}

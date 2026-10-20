@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import GoogleTranslate from "@/components/GoogleTranslate";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -71,30 +72,39 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
+
+            {/* Multilingual Selector */}
+            <div className="ml-2">
+              <GoogleTranslate />
+            </div>
+
             <Link
               href="/contact"
-              className="ml-3 px-5 py-2.5 bg-accent text-white rounded-md font-semibold text-sm hover:bg-accent-light transition-colors shadow-md"
+              className="ml-3 px-5 py-2.5 bg-accent text-white rounded-md font-semibold text-sm hover:bg-accent-light transition-colors shadow-md shrink-0"
             >
               Enquire Now
             </Link>
           </nav>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-dark"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+          {/* Mobile Right: Translate + Hamburger */}
+          <div className="flex md:hidden items-center gap-2">
+            <GoogleTranslate />
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 text-dark"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
