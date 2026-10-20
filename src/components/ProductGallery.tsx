@@ -28,7 +28,7 @@ export default function ProductGallery({
   const activeItem = images[activeIdx] || images[0];
 
   return (
-    <div className="sticky top-28 space-y-4">
+    <div className="md:sticky md:top-28 space-y-4 mb-6 md:mb-0">
       {/* Main Image View */}
       <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-xl bg-gray-100 relative group">
         <img

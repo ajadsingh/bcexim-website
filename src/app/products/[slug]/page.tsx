@@ -48,19 +48,21 @@ export default async function ProductDetailPage({ params }: Props) {
       </div>
 
       {/* Product Hero */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-8 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16 items-start">
             {/* Left - Product Gallery with Flakes and Powder options */}
-            <ProductGallery
-              productName={product.name}
-              category={product.category}
-              mainImage={product.image}
-              gallery={product.gallery}
-            />
+            <div className="w-full">
+              <ProductGallery
+                productName={product.name}
+                category={product.category}
+                mainImage={product.image}
+                gallery={product.gallery}
+              />
+            </div>
 
             {/* Right - Product Info */}
-            <div>
+            <div className="w-full">
               <span className="text-primary text-sm font-semibold uppercase tracking-wider mb-2 block">
                 {product.category}
               </span>
