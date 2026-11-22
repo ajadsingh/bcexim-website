@@ -27,7 +27,7 @@ export default function Home() {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
                 Premium Indian{" "}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-green-300">
-                  Spices & Dehydrated
+                  Agro & Dehydrated
                 </span>{" "}
                 Products
               </h1>
@@ -248,7 +248,7 @@ export default function Home() {
       <section className="py-16 md:py-20 bg-primary">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
-            Looking for Premium Indian Spices and Dehydrated Products?
+            Looking for Premium Indian Agro and Dehydrated Products?
           </h2>
           <p className="text-white/80 text-base md:text-lg mb-8 max-w-2xl mx-auto">
             Let&apos;s discuss your requirements. Our team is ready to provide you
